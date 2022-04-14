@@ -11,7 +11,16 @@
     <% # 🚅 super scaffolding will insert new children above this line. %>
 
     <% unless scaffolding_things_disabled? %>
-     
+     <% if @team.subdomain.blank? || @team.api.blank? %>
+      <%= render "account/shared/commentary/box" do |p| %>
+      <% p.content_for :content do %>
+      Syncro subdomain or API key missing
+      <% end %>
+        <% p.content_for :commentary do %>
+        Ensure to edit your team and enter the syncro subdomain (just the unique bit), and your API key
+        <% end %>
+      <% end %>
+     <% end %>
     <% end %>
   <% end %>
 <% end %>
