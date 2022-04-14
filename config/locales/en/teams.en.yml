@@ -1,10 +1,22 @@
 en:
-  memberships:
+  teams:
     fields:
       _:
+      subdomain:
+        _: &subdomain Subdomain
+        label: "Syncro Subdomain"
+        heading: "Syncro Subdomain"
+        help: "Enter your syncro subdomain"
+      api:
+        _: &api Api
+        label: "Syncro API Key"
+        heading: "Syncro API Key"
+        help: "An API KEY with full access is required"
       # 🚅 super scaffolding will insert new fields above this line.
   activerecord:
     attributes:
       membership:
         _:
+        subdomain: *subdomain
+        api: *api
         # 🚅 super scaffolding will insert new activerecord attributes above this line.

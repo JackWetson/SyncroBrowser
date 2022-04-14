@@ -3,6 +3,8 @@ class Api::V1::TeamSerializer < Api::V1::ApplicationSerializer
 
   # The `:id` entries are redundant, but for the moment they help us generate valid code.
   attributes :id,
+    :subdomain,
+    :api,
     # 🚅 super scaffolding will insert new fields above this line.
     :id
 end
