@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "Ruby",
+        "request": "launch",
+        "name": "Rails",
+        "program": "${workspaceRoot}/bin/rails",
+        "args": ["server","-b","0.0.0.0"]
+      },
+    
+    ],
+    "compounds": [
+      {
+        "name": "Server/Client",
+        "configurations": ["Rails"],
+        "preLaunchTask": "${defaultBuildTask}",
+        "stopAll": true
+      }
+    ]
+  }
