@@ -8,6 +8,7 @@ class Account::TeamsController < Account::ApplicationController
       :description,
       :subdomain,
       :api,
+    :allowed_updates,
     # 🚅 super scaffolding will insert new fields above this line.
     ]
   end

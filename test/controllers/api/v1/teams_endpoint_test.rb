@@ -17,6 +17,7 @@ class Api::V1::TeamsEndpointTest < Api::Test
     assert_equal team_data["name"], team.name
     assert_equal team_data["subdomain"], team.subdomain
     assert_equal team_data["api"], team.api
+    assert_equal team_data['allowed_updates'], team.allowed_updates
     # 🚅 super scaffolding will insert new fields above this line.
   end
 

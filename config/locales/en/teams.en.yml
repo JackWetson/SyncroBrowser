@@ -12,6 +12,13 @@ en:
         label: "Syncro API Key"
         heading: "Syncro API Key"
         help: "An API KEY with full access is required"
+      allowed_updates:
+        _: &allowed_updates Allowed Updates
+        label: "Are we allowed to update live from the Syncro API?"
+        heading: *allowed_updates
+        options:
+          yes: "Yes - Use Live Data"
+          no: "No - Use Offline Data Only"
       # 🚅 super scaffolding will insert new fields above this line.
   activerecord:
     attributes:
@@ -19,4 +26,5 @@ en:
         _:
         subdomain: *subdomain
         api: *api
+        allowed_updates: *allowed_updates
         # 🚅 super scaffolding will insert new activerecord attributes above this line.
