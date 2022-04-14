@@ -15,12 +15,14 @@ class Api::V1::TeamsEndpointTest < Api::Test
     # Fetch the team in question and prepare to compare it's attributes.
     team = Team.find(team_data["id"])
     assert_equal team_data["name"], team.name
+    assert_equal team_data["subdomain"], team.subdomain
+    assert_equal team_data["api"], team.api
     # 🚅 super scaffolding will insert new fields above this line.
   end
 
   test "index" do
     # Fetch and ensure nothing is seriously broken.
-    get "/api/v1/teams", params: {access_token: access_token}
+    get "/api/v1/teams", params: { access_token: access_token }
     assert_response :success
 
     # Make sure it's returning our resources.
@@ -36,14 +38,14 @@ class Api::V1::TeamsEndpointTest < Api::Test
 
   test "show" do
     # Fetch and ensure nothing is seriously broken.
-    get "/api/v1/teams/#{@team.id}", params: {access_token: access_token}
+    get "/api/v1/teams/#{@team.id}", params: { access_token: access_token }
     assert_response :success
 
     # Ensure all the required data is returned properly.
     assert_proper_object_serialization response.parsed_body.dig("data", "attributes")
 
     # Also ensure we can't do that same action as another user.
-    get "/api/v1/teams/#{@team.id}", params: {access_token: another_access_token}
+    get "/api/v1/teams/#{@team.id}", params: { access_token: another_access_token }
     assert_response_specific_not_found
   end
 
@@ -53,7 +55,7 @@ class Api::V1::TeamsEndpointTest < Api::Test
     team_data.except!(:id, :created_at, :updated_at)
 
     post "/api/v1/teams",
-      params: team_data.merge({access_token: access_token})
+      params: team_data.merge({ access_token: access_token })
 
     assert_response :success
 
@@ -64,10 +66,10 @@ class Api::V1::TeamsEndpointTest < Api::Test
   test "update" do
     # Post an attribute update ensure nothing is seriously broken.
     put "/api/v1/teams/#{@team.id}", params: {
-      access_token: access_token,
-      name: "Alternative String Value",
-      # 🚅 super scaffolding will also insert new fields above this line.
-    }
+                                       access_token: access_token,
+                                       name: "Alternative String Value",
+                                     # 🚅 super scaffolding will also insert new fields above this line.
+                                     }
 
     assert_response :success
 
@@ -80,13 +82,13 @@ class Api::V1::TeamsEndpointTest < Api::Test
     # 🚅 super scaffolding will additionally insert new fields above this line.
 
     # Also ensure we can't do that same action as another user.
-    put "/api/v1/teams/#{@team.id}", params: {access_token: another_access_token}
+    put "/api/v1/teams/#{@team.id}", params: { access_token: another_access_token }
     assert_response_specific_not_found
   end
 
   test "destroy" do
     # Delete and ensure it actually went away.
-    delete "/api/v1/teams/#{@team.id}", params: {access_token: access_token}
+    delete "/api/v1/teams/#{@team.id}", params: { access_token: access_token }
     assert_response :not_found
   end
 end
