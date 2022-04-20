@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_20_124401) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_131305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,37 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_124401) do
     t.integer "syncro_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.integer "syncro_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "businessname"
+    t.string "email"
+    t.string "phone"
+    t.string "mobile"
+    t.datetime "created"
+    t.datetime "updated"
+    t.string "pdf_url"
+    t.string "address"
+    t.string "address_2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "notes"
+    t.boolean "get_sms"
+    t.boolean "opt_out"
+    t.boolean "disabled"
+    t.boolean "no_email"
+    t.string "business_and_full_name"
+    t.string "business_then_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_customers_on_team_id"
   end
 
   create_table "imports_csv_imports", force: :cascade do |t|
@@ -359,6 +390,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_124401) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "customers", "teams"
   add_foreign_key "imports_csv_imports", "teams"
   add_foreign_key "integrations_stripe_installations", "oauth_stripe_accounts"
   add_foreign_key "integrations_stripe_installations", "teams"

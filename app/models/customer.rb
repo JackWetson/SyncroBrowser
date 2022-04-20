@@ -1,19 +1,16 @@
-class Team < ApplicationRecord
-  include Teams::Base
-  include Webhooks::Outgoing::TeamSupport
+class Customer < ApplicationRecord
   # 🚅 add concerns above.
 
+  belongs_to :team
   # 🚅 add belongs_to associations above.
 
-  has_many :customers, dependent: :destroy
   # 🚅 add has_many associations above.
-
-  # 🚅 add oauth providers above.
 
   # 🚅 add has_one associations above.
 
   # 🚅 add scopes above.
 
+  validates :syncroid, presence: true
   # 🚅 add validations above.
 
   # 🚅 add callbacks above.

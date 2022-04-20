@@ -1,8 +1,10 @@
 <% unless hide_team_resource_menus? %>
   <%= render "account/shared/menu/section", title: t("menus.main.labels.resources") do %>
     <%= render "account/teams/menu_item" %>
+       <%= render "account/customers/menu_item" %>
        <% end %>
 
+ 
   <%= render "account/shared/menu/section", title: t("menus.main.labels.collaborate") do %>
     <%= render "account/memberships/menu_item" %>
   <% end %>

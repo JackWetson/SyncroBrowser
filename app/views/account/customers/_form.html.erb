@@ -1,0 +1,41 @@
+<%= form_with model: customer, url: (customer.persisted? ? [:account, customer] : [:account, @team, :customers]), local: true, class: 'form' do |form| %>
+  <%= render 'account/shared/forms/errors', form: form %>
+
+  <% with_field_settings form: form do %>
+    <%= render 'shared/fields/text_field', method: :syncroid, options: {autofocus: true} %>
+    <%= render 'shared/fields/text_field', method: :firstname %>
+    <%= render 'shared/fields/text_field', method: :lastname %>
+    <%= render 'shared/fields/text_field', method: :businessname %>
+    <%= render 'shared/fields/text_field', method: :email %>
+    <%= render 'shared/fields/text_field', method: :phone %>
+    <%= render 'shared/fields/text_field', method: :mobile %>
+    <%= render 'shared/fields/date_and_time_field', method: :created %>
+    <%= render 'shared/fields/date_and_time_field', method: :updated %>
+    <%= render 'shared/fields/text_field', method: :pdf_url %>
+    <%= render 'shared/fields/text_field', method: :address %>
+    <%= render 'shared/fields/text_field', method: :address_2 %>
+    <%= render 'shared/fields/text_field', method: :city %>
+    <%= render 'shared/fields/text_field', method: :state %>
+    <%= render 'shared/fields/text_field', method: :zip %>
+    <%= render 'shared/fields/text_field', method: :latitude %>
+    <%= render 'shared/fields/text_field', method: :longitude %>
+    <%= render 'shared/fields/text_field', method: :notes %>
+    <%= render 'shared/fields/buttons', method: :get_sms %>
+    <%= render 'shared/fields/buttons', method: :opt_out %>
+    <%= render 'shared/fields/buttons', method: :disabled %>
+    <%= render 'shared/fields/buttons', method: :no_email %>
+    <%= render 'shared/fields/text_field', method: :business_and_full_name %>
+    <%= render 'shared/fields/text_field', method: :business_then_name %>
+    <%# 🚅 super scaffolding will insert new fields above this line. %>
+  <% end %>
+
+  <div class="buttons">
+    <%= form.submit (form.object.persisted? ? t('.buttons.update') : t('.buttons.create')), class: "button" %>
+    <% if form.object.persisted? %>
+    <%= link_to t('global.buttons.cancel'), [:account, customer], class: "button-secondary" %>
+    <% else %>
+    <%= link_to t('global.buttons.cancel'), [:account, @team, :customers], class: "button-secondary" %>
+    <% end %>
+  </div>
+
+<% end %>

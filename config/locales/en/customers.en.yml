@@ -1,0 +1,216 @@
+en:
+  customers: &customers
+    label: &label Customers
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: ti ti-user
+    buttons: &buttons
+      new: Add New Customer
+      create: Create Customer
+      edit: Edit Customer
+      update: Update Customer
+      destroy: Remove Customer
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{customer_name}? This will also remove it's associated data. This can't be undone.
+    fields: &fields
+      id:
+        heading: Customer ID
+      team_id:
+        heading: Team ID
+      syncroid:
+        _: &syncroid Syncroid
+        label: *syncroid
+        heading: *syncroid
+      firstname:
+        _: &firstname Firstname
+        label: *firstname
+        heading: *firstname
+      lastname:
+        _: &lastname Lastname
+        label: *lastname
+        heading: *lastname
+      businessname:
+        _: &businessname Businessname
+        label: *businessname
+        heading: *businessname
+      email:
+        _: &email Email
+        label: *email
+        heading: *email
+      phone:
+        _: &phone Phone
+        label: *phone
+        heading: *phone
+      mobile:
+        _: &mobile Mobile
+        label: *mobile
+        heading: *mobile
+      created:
+        _: &created Created
+        label: *created
+        heading: *created
+      updated:
+        _: &updated Updated
+        label: *updated
+        heading: *updated
+      pdf_url:
+        _: &pdf_url Pdf Url
+        label: *pdf_url
+        heading: *pdf_url
+      address:
+        _: &address Address
+        label: *address
+        heading: *address
+      address_2:
+        _: &address_2 Address 2
+        label: *address_2
+        heading: *address_2
+      city:
+        _: &city City
+        label: *city
+        heading: *city
+      state:
+        _: &state State
+        label: *state
+        heading: *state
+      zip:
+        _: &zip Zip
+        label: *zip
+        heading: *zip
+      latitude:
+        _: &latitude Latitude
+        label: *latitude
+        heading: *latitude
+      longitude:
+        _: &longitude Longitude
+        label: *longitude
+        heading: *longitude
+      notes:
+        _: &notes Notes
+        label: *notes
+        heading: *notes
+      get_sms:
+        _: &get_sms Get Sms
+        label: *get_sms
+        heading: *get_sms
+        options:
+          yes: "Yes"
+          no: "No"
+      opt_out:
+        _: &opt_out Opt Out
+        label: *opt_out
+        heading: *opt_out
+        options:
+          yes: "Yes"
+          no: "No"
+      disabled:
+        _: &disabled Disabled
+        label: *disabled
+        heading: *disabled
+        options:
+          yes: "Yes"
+          no: "No"
+      no_email:
+        _: &no_email No Email
+        label: *no_email
+        heading: *no_email
+        options:
+          yes: "Yes"
+          no: "No"
+      business_and_full_name:
+        _: &business_and_full_name Business And Full Name
+        label: *business_and_full_name
+        heading: *business_and_full_name
+      business_then_name:
+        _: &business_then_name Business Then Name
+        label: *business_then_name
+        heading: *business_then_name
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Customers"
+      index: "List Customers"
+      create: "Add a New Customer"
+      member_actions: "Actions for an Individual Customer"
+      show: "Retrieve a Customer"
+      update: "Update a Customer"
+      destroy: "Delete a Customer"
+      fields: *fields
+    index:
+      section: "%{teams_possessive} Customers"
+      contexts:
+        team:
+          header: Customers
+          description: Below is a list of Customers that have been added for %{team_name}.
+          description_empty: No Customers have been added for %{team_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{customer_name}"
+      header: Customer Details
+      description: Below are the details we have for %{customer_name}.
+      manage_description: You'll also find options for updating these details or removing %{customer_name} from %{team_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Customer for %{team_name}"
+      header: New Customer Details
+      description: Please provide the details of the new Customer you'd like to add to %{team_name}.
+      form: *form
+    edit:
+      section: "%{customer_name}"
+      header: Edit Customer Details
+      description: You can update the details or settings for %{customer_name} below.
+      form: *form
+    notifications:
+      created: Customer was successfully created.
+      updated: Customer was successfully updated.
+      destroyed: Customer was successfully destroyed.
+  account:
+    customers: *customers
+  activerecord:
+    attributes:
+      customer:
+        syncroid: *syncroid
+        firstname: *firstname
+        lastname: *lastname
+        businessname: *businessname
+        email: *email
+        phone: *phone
+        mobile: *mobile
+        created: *created
+        updated: *updated
+        pdf_url: *pdf_url
+        address: *address
+        address_2: *address_2
+        city: *city
+        state: *state
+        zip: *zip
+        latitude: *latitude
+        longitude: *longitude
+        notes: *notes
+        get_sms: *get_sms
+        opt_out: *opt_out
+        disabled: *disabled
+        no_email: *no_email
+        business_and_full_name: *business_and_full_name
+        business_then_name: *business_then_name
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at
