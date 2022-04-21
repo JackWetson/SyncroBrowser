@@ -1,7 +1,15 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Scaffolding::AbsolutelyAbstract::CreativeConcepts::CollaboratorTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+require 'test_helper'
+
+module Scaffolding
+  module AbsolutelyAbstract
+    module CreativeConcepts
+      class CollaboratorTest < ActiveSupport::TestCase
+        # test "the truth" do
+        #   assert true
+        # end
+      end
+    end
+  end
 end

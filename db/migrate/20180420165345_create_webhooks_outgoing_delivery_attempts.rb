@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWebhooksOutgoingDeliveryAttempts < ActiveRecord::Migration[5.2]
   def change
     create_table :webhooks_outgoing_delivery_attempts do |t|

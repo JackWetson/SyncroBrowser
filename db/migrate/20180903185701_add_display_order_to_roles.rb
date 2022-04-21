@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDisplayOrderToRoles < ActiveRecord::Migration[5.2]
   def change
     add_column :roles, :display_order, :integer, default: 0

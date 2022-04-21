@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWebhooksIncomingBulletTrainWebhooks < ActiveRecord::Migration[5.2]
   def change
     create_table :webhooks_incoming_bullet_train_webhooks do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMoreExampleFieldsToTangibleThings < ActiveRecord::Migration[6.1]
   def change
     add_column :scaffolding_completely_concrete_tangible_things, :date_and_time_field_value, :datetime

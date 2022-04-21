@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddExampleFieldsToScaffoldingThings < ActiveRecord::Migration[6.0]
   def change
     add_column :scaffolding_things, :button_value, :string

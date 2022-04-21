@@ -1,26 +1,30 @@
-class Account::TeamsController < Account::ApplicationController
-  include Account::Teams::ControllerBase
+# frozen_string_literal: true
 
-  private
+module Account
+  class TeamsController < Account::ApplicationController
+    include Account::Teams::ControllerBase
 
-  def permitted_fields
-    [
-      :description,
-      :subdomain,
-      :api,
-    :allowed_updates,
-    # 🚅 super scaffolding will insert new fields above this line.
-    ]
-  end
+    private
 
-  def permitted_arrays
-    {
- # 🚅 super scaffolding will insert new arrays above this line.
+    def permitted_fields
+      [
+        :description,
+        :subdomain,
+        :api,
+        :allowed_updates
+        # 🚅 super scaffolding will insert new fields above this line.
+      ]
+    end
+
+    def permitted_arrays
+      {
+        # 🚅 super scaffolding will insert new arrays above this line.
       }
-  end
+    end
 
-  def process_params(strong_params)
-    # 🚅 super scaffolding will insert processing for new fields above this line.
-    strong_params
+    def process_params(strong_params)
+      # 🚅 super scaffolding will insert processing for new fields above this line.
+      strong_params
+    end
   end
 end

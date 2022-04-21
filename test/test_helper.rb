@@ -1,13 +1,15 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 # We've started loading seeds by default to try to reduce any duplication of effort trying to get the test
 # environment to look the same as the actual development and production environments. This means a consolidation
 # of setup for things like the plans available for subscriptions and which outgoing webhooks are available to users.
-require File.expand_path("../../db/seeds", __FILE__)
+require File.expand_path('../db/seeds', __dir__)
 
-require "knapsack_pro"
+require 'knapsack_pro'
 knapsack_pro_adapter = KnapsackPro::Adapters::MinitestAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
 
@@ -25,6 +27,6 @@ end
 # https://github.com/rails/rails/issues/37270
 # https://edgeapi.rubyonrails.org/classes/ActionDispatch/SystemTestCase.html
 def switch_adapter_to_sidekiq
-  (ActiveJob::Base.descendants << ActiveJob::Base).each { |a| a.disable_test_adapter }
+  (ActiveJob::Base.descendants << ActiveJob::Base).each(&:disable_test_adapter)
   ActiveJob::Base.queue_adapter = :sidekiq
 end

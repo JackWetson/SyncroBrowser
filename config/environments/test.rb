@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 # The test environment is used exclusively to run your application's
 # test suite. You never need to work with it otherwise. Remember that
@@ -19,12 +21,12 @@ Rails.application.configure do
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
   # system, or in some way before deploying your code.
-  config.eager_load = ENV["CI"].present?
+  config.eager_load = ENV['CI'].present?
 
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
+    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
   }
 
   # Show full error reports and disable caching.
@@ -62,7 +64,7 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # We only enable this for a specific test.
-  config.action_view.annotate_rendered_view_with_filenames = ENV["ENABLE_VIEW_ANNOTATION"] || false
+  config.action_view.annotate_rendered_view_with_filenames = ENV['ENABLE_VIEW_ANNOTATION'] || false
 
   # 🚫 DEFAULT BULLET TRAIN CONFIGURATION
   # This section represents the default settings for a Bullet Train application. Your own configuration should be
@@ -70,13 +72,13 @@ Rails.application.configure do
   # if you want to change a default value specified here. Instead, simply re-specify the value in the section that
   # follows this section.
 
-  config.action_mailer.default_url_options = {host: "localhost", port: 3001}
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
   config.i18n.raise_on_missing_translations = true
 
-  # TODO There are too many deprecation warnings after upgrading to Rails 6.
+  # TODO: There are too many deprecation warnings after upgrading to Rails 6.
   config.active_support.deprecation = :silence
 
-  # TODO for some reason this doesn't seem to be doing anything.
+  # TODO: for some reason this doesn't seem to be doing anything.
   config.active_job.queue_adapter = :inline
 
   # ✅ YOUR APPLICATION'S CONFIGURATION

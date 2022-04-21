@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddInvitationToMembership < ActiveRecord::Migration[6.0]
   def change
     add_reference :memberships, :invitation, null: true, foreign_key: true

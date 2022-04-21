@@ -1,22 +1,26 @@
-class Account::MembershipsController < Account::ApplicationController
-  include Account::Memberships::ControllerBase
+# frozen_string_literal: true
 
-  private
+module Account
+  class MembershipsController < Account::ApplicationController
+    include Account::Memberships::ControllerBase
 
-  def permitted_fields
-    [
-      # 🚅 super scaffolding will insert new fields above this line.
-    ]
-  end
+    private
 
-  def permitted_arrays
-    {
-      # 🚅 super scaffolding will insert new arrays above this line.
-    }
-  end
+    def permitted_fields
+      [
+        # 🚅 super scaffolding will insert new fields above this line.
+      ]
+    end
 
-  def process_params(strong_params)
-    # 🚅 super scaffolding will insert processing for new fields above this line.
-    strong_params
+    def permitted_arrays
+      {
+        # 🚅 super scaffolding will insert new arrays above this line.
+      }
+    end
+
+    def process_params(strong_params)
+      # 🚅 super scaffolding will insert processing for new fields above this line.
+      strong_params
+    end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddOptionFieldsToScaffoldingCompletelyConcreteTangibleThings < ActiveRecord::Migration[6.1]
   def change
     add_column :scaffolding_completely_concrete_tangible_things, :option_value, :string

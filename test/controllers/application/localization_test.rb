@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class ApplicationControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
@@ -16,7 +18,7 @@ class ApplicationControllerTest < ActionController::TestCase
     Rails.application.routes.disable_clear_and_finalize = true
 
     Rails.application.routes.draw do
-      get "any_action" => "application#any_action"
+      get 'any_action' => 'application#any_action'
     end
 
     @actual_locales = I18n.available_locales
@@ -29,69 +31,69 @@ class ApplicationControllerTest < ActionController::TestCase
     I18n.available_locales = @actual_locales
   end
 
-  test "team locale is nil, user locale is nil" do
+  test 'team locale is nil, user locale is nil' do
     sign_in @user
 
     get :any_action
     assert_equal I18n.default_locale.to_s, response.body
   end
 
-  test "team locale is nil, user locale is nil, HTTP_ACCEPT_LANGUAGE equals es" do
-    @request.headers["HTTP_ACCEPT_LANGUAGE"] = "es"
+  test 'team locale is nil, user locale is nil, HTTP_ACCEPT_LANGUAGE equals es' do
+    @request.headers['HTTP_ACCEPT_LANGUAGE'] = 'es'
     sign_in @user
 
     get :any_action
-    assert_equal "es", response.body
+    assert_equal 'es', response.body
   end
 
-  test "team locale is es, user locale is nil" do
+  test 'team locale is es, user locale is nil' do
     sign_in @user
-    @user.current_team.update!(locale: "es")
+    @user.current_team.update!(locale: 'es')
 
     get :any_action
-    assert_equal "es", response.body
+    assert_equal 'es', response.body
   end
 
-  test "team locale is es, user locale is de" do
+  test 'team locale is es, user locale is de' do
     sign_in @user
-    @user.current_team.update!(locale: "es")
-    @user.update!(locale: "de")
+    @user.current_team.update!(locale: 'es')
+    @user.update!(locale: 'de')
 
     get :any_action
-    assert_equal "de", response.body
+    assert_equal 'de', response.body
   end
 
-  test "team locale is nil, user locale is de" do
+  test 'team locale is nil, user locale is de' do
     sign_in @user
-    @user.update!(locale: "de")
+    @user.update!(locale: 'de')
 
     get :any_action
-    assert_equal "de", response.body
+    assert_equal 'de', response.body
   end
 
-  test "team locale is es, user locale is empty string" do
+  test 'team locale is es, user locale is empty string' do
     sign_in @user
-    @user.update!(locale: "")
-    @user.current_team.update!(locale: "es")
+    @user.update!(locale: '')
+    @user.current_team.update!(locale: 'es')
 
     get :any_action
-    assert_equal "es", response.body
+    assert_equal 'es', response.body
   end
 
-  test "user not signed in" do
+  test 'user not signed in' do
     get :any_action
     assert_equal I18n.default_locale.to_s, response.body
   end
 
-  test "user not signed in and browser sends HTTP_ACCEPT_LANGUAGE" do
-    @request.headers["HTTP_ACCEPT_LANGUAGE"] = "de"
+  test 'user not signed in and browser sends HTTP_ACCEPT_LANGUAGE' do
+    @request.headers['HTTP_ACCEPT_LANGUAGE'] = 'de'
 
     get :any_action
-    assert_equal "de", response.body
+    assert_equal 'de', response.body
   end
 
-  test "user not signed in and browser sends HTTP_ACCEPT_LANGUAGE with unknown value" do
-    @request.headers["HTTP_ACCEPT_LANGUAGE"] = "this-language-does-not-really-exist"
+  test 'user not signed in and browser sends HTTP_ACCEPT_LANGUAGE with unknown value' do
+    @request.headers['HTTP_ACCEPT_LANGUAGE'] = 'this-language-does-not-really-exist'
 
     get :any_action
     assert_equal I18n.default_locale.to_s, response.body

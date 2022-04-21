@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,12 +22,13 @@ module Syncrobrowser
     # config.eager_load_paths << Rails.root.join("extras")
 
     # See `config/locales/locales.yml` for a list of available locales.
-    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
-    config.i18n.available_locales = YAML.safe_load(File.read("config/locales/locales.yml"), aliases: true).with_indifferent_access.dig(:locales).keys.map(&:to_sym)
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.available_locales = YAML.safe_load(File.read('config/locales/locales.yml'),
+                                                   aliases: true).with_indifferent_access[:locales].keys.map(&:to_sym)
     config.i18n.default_locale = config.i18n.available_locales.first
 
     # This actually doesn't appear to work.
     # TODO We should make the at-mentions stuff configurable.
-    config.action_view.sanitized_allowed_protocols = ["http", "syncrobrowser"]
+    config.action_view.sanitized_allowed_protocols = %w[http syncrobrowser]
   end
 end

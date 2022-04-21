@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # See `config/routes/*.rb` to customize these configurations.
-  draw "concerns"
-  draw "devise"
-  draw "sidekiq"
+  draw 'concerns'
+  draw 'devise'
+  draw 'sidekiq'
 
   # This is helpful to have around when working with shallow routes and complicated model namespacing. We don't use this
   # by default, but sometimes Super Scaffolding will generate routes that use this for `only` and `except` options.
   # TODO Would love to get this out of the application routes file.
-  collection_actions = [:index, :new, :create]
+  collection_actions = %i[index new create]
 
   # This helps mark `resources` definitions below as not actually defining the routes for a given resource, but just
   # making it possible for developers to extend definitions that are already defined by the `bullet_train` Ruby gem.
   # TODO Would love to get this out of the application routes file.
-  extending = {only: []}
+  extending = { only: [] }
 
-  scope module: "public" do
+  scope module: 'public' do
     # To keep things organized, we put non-authenticated controllers in the `Public::` namespace.
     # The root `/` path is routed to `Public::HomeController#index` by default.
   end

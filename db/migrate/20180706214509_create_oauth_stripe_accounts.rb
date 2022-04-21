@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateOauthStripeAccounts < ActiveRecord::Migration[5.2]
   def change
     create_table :oauth_stripe_accounts do |t|

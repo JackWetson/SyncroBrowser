@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFormerUserFieldsToMembership < ActiveRecord::Migration[6.0]
   def change
     add_column :memberships, :user_first_name, :string

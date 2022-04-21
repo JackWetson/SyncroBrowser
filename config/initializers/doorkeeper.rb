@@ -15,13 +15,15 @@ Doorkeeper.configure do
 
   resource_owner_from_credentials do |_routes|
     # performs explicit validation on all required parameters to raise better errors when they're missing
-    [:client_id, :client_secret].each do |param|
+    %i[client_id client_secret].each do |param|
       # when omitted, :token is automatically populated as a Hash of all params,
       # so naturally we don't want that to count
-      raise Doorkeeper::Errors::MissingRequiredParameter.new(param.to_s) unless params[param].present? && params[param].is_a?(String)
+      unless params[param].present? && params[param].is_a?(String)
+        raise Doorkeeper::Errors::MissingRequiredParameter, param.to_s
+      end
     end
 
-    # TODO Should we throw a more meaningful error if the application can't be found by these keys?
+    # TODO: Should we throw a more meaningful error if the application can't be found by these keys?
     Platform::Application.find_by(uid: params[:client_id], secret: params[:client_secret])&.user
   end
 
@@ -70,7 +72,7 @@ Doorkeeper.configure do
   #   end
   # end
 
-  application_class "Platform::Application"
+  application_class 'Platform::Application'
 
   # Enables polymorphic Resource Owner association for Access Tokens and Access Grants.
   # By default this option is disabled.
@@ -251,7 +253,7 @@ Doorkeeper.configure do
   # values should be the array of scopes for that grant type.
   # Note: scopes should be from configured_scopes (i.e. default or optional)
   #
-  scopes_by_grant_type password: [:read, :write, :delete]
+  scopes_by_grant_type password: %i[read write delete]
 
   # Forbids creating/updating applications with arbitrary scopes that are
   # not in configuration, i.e. +default_scopes+ or +optional_scopes+.
@@ -441,7 +443,7 @@ Doorkeeper.configure do
   # For example if dealing with a trusted application.
   #
   skip_authorization do
-    # TODO We actually want to disable this. We want people to have to approve their authorizations.
+    # TODO: We actually want to disable this. We want people to have to approve their authorizations.
     true
   end
 

@@ -1,18 +1,19 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require "pry"
+require 'pry'
 
 case ARGV.shift
-when "tailwind-config"
+when 'tailwind-config'
   theme = ARGV.shift
-  # TODO Check that the file actually exists before reporting it back?
+  # TODO: Check that the file actually exists before reporting it back?
   puts "#{`bundle show bullet_train-themes-#{theme}`.chomp}/tailwind.#{theme}.config.js"
-when "tailwind-stylesheet"
+when 'tailwind-stylesheet'
   theme = ARGV.shift
-  # TODO Check that the file actually exists before reporting it back?
+  # TODO: Check that the file actually exists before reporting it back?
   puts "#{`bundle show bullet_train-themes-#{theme}`.chomp}/app/assets/stylesheets/#{theme}.tailwind.css"
-when "javascript"
+when 'javascript'
   theme = ARGV.shift
-  # TODO Check that the file actually exists before reporting it back?
+  # TODO: Check that the file actually exists before reporting it back?
   puts "#{`bundle show bullet_train-themes-#{theme}`.chomp}/app/javascript/application.#{theme}.js"
 end

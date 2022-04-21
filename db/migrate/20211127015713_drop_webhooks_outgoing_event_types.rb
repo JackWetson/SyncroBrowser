@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DropWebhooksOutgoingEventTypes < ActiveRecord::Migration[6.1]
   def up
     drop_table :webhooks_outgoing_event_types

@@ -1,8 +1,14 @@
-class Api::V1::Root < Api::Base
-  include Api::V1::Base
+# frozen_string_literal: true
 
-  mount Api::V1::CustomersEndpoint
-  # 🚅 super scaffolding will mount new endpoints above this line.
+module Api
+  module V1
+    class Root < Api::Base
+      include Api::V1::Base
 
-  handle_not_found
+      mount Api::V1::CustomersEndpoint
+      # 🚅 super scaffolding will mount new endpoints above this line.
+
+      handle_not_found
+    end
+  end
 end

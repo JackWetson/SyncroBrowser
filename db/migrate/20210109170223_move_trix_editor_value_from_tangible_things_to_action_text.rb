@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MoveTrixEditorValueFromTangibleThingsToActionText < ActiveRecord::Migration[6.1]
   def change
     Scaffolding::CompletelyConcrete::TangibleThing.find_each do |tangible_thing|

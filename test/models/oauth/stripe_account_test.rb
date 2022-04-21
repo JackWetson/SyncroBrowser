@@ -1,7 +1,11 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Oauth::StripeAccountTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+require 'test_helper'
+
+module Oauth
+  class StripeAccountTest < ActiveSupport::TestCase
+    # test "the truth" do
+    #   assert true
+    # end
+  end
 end

@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'open3'
 
 db_migration_command = 'rails db:migrate'
 
-_, stderr, _ = Open3.capture3(db_migration_command)
+_, stderr, = Open3.capture3(db_migration_command)
 
 def migration_file_location(error_line_list, line_index)
   location_without_extension = error_line_list[line_index + 1].split('.rb:')[0]
@@ -72,14 +73,14 @@ error_line_list = stderr.each_line.map(&:itself)
 exit if error_line_list.length.zero?
 
 stderr.each_line.with_index do |line, index|
-  if line.include?("ArgumentError:")
+  if line.include?('ArgumentError:')
     error_line = line
 
     file_location = migration_file_location(error_line_list, index)
   end
 end
 
-puts error_line + "\n"
+puts "#{error_line}\n"
 
 current_index_name = error_line[/ArgumentError: Index name '(.*?)' on table '/m, 1]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrateAdminFlagOnInvitations < ActiveRecord::Migration[5.2]
   def up
     Invitation.where(admin: true).each do |invitation|

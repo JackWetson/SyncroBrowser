@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :integrations_stripe_installation, class: "Integrations::StripeInstallation" do
+  factory :integrations_stripe_installation, class: 'Integrations::StripeInstallation' do
     team { nil }
     oauth_stripe_account { nil }
-    name { "MyString" }
+    name { 'MyString' }
   end
 end

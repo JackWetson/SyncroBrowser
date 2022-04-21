@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 module AbilityTest
   class TeamMemberScenarios < ActiveSupport::TestCase
@@ -10,7 +12,7 @@ module AbilityTest
       @user_ability = Ability.new(@user)
     end
 
-    test "can manage their account" do
+    test 'can manage their account' do
       assert @user_ability.can?(:manage, @user)
     end
 
@@ -18,12 +20,12 @@ module AbilityTest
       assert @user_ability.cannot?(:manage, @another_user)
     end
 
-    test "can manage team" do
+    test 'can manage team' do
       assert @user_ability.can?(:manage, @user, Team.new)
     end
 
-    test "can destroy their membership" do
-      skip("app/models/ability.rb:22")
+    test 'can destroy their membership' do
+      skip('app/models/ability.rb:22')
       assert @user_ability.cannot?(:destroy, @user, Membership.new(user: @user))
     end
   end
@@ -36,7 +38,7 @@ module AbilityTest
       @user_ability = Ability.new(@user)
     end
 
-    test "can manage their account" do
+    test 'can manage their account' do
       assert @user_ability.can?(:manage, @user)
     end
 
@@ -61,11 +63,11 @@ module AbilityTest
       @admin_ability = Ability.new(@admin)
     end
 
-    test "can manage team" do
+    test 'can manage team' do
       assert @admin_ability.can?(:manage, @membership.team)
     end
 
-    test "can manage membership" do
+    test 'can manage membership' do
       assert @admin_ability.can?(:manage, Membership.new(team: @admin.current_team))
     end
   end

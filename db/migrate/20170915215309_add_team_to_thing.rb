@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTeamToThing < ActiveRecord::Migration[5.1]
   def change
     add_reference :things, :team, foreign_key: true

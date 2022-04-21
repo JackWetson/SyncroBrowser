@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSyncroAccountIdToTeam < ActiveRecord::Migration[7.0]
   def change
     add_column :teams, :syncro_account_id, :integer

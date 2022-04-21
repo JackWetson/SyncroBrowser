@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Use: $ bin/open-theme account/shared/box
 # This command points to the actual file being referenced.
@@ -12,8 +13,8 @@
 require 'fileutils'
 require 'colorize'
 
-require_relative '../app/helpers/theme_helper.rb'
-require_relative '../lib/theme_partials.rb'
+require_relative '../app/helpers/theme_helper'
+require_relative '../lib/theme_partials'
 include ThemeHelper
 include ThemePartials
 
@@ -29,29 +30,29 @@ THEME_DIRECTORY_ORDER.each do |theme|
     partial_without_hierarchy_base = remove_hierarchy_base(literal_partial_path, include_target)
 
     # shared/fields are framework-agnostic, so we always pull them from the base directory.
-    if literal_partial_path.match(/^shared\/fields/)
-      resolved_partial = get_full_debased_file_path(partial_without_hierarchy_base, "base")
-    else
-      resolved_partial = get_full_debased_file_path(partial_without_hierarchy_base, theme)
-    end
+    resolved_partial = if literal_partial_path.match(%r{^shared/fields})
+                         get_full_debased_file_path(partial_without_hierarchy_base, 'base')
+                       else
+                         get_full_debased_file_path(partial_without_hierarchy_base, theme)
+                       end
 
-    if File.exists?(resolved_partial)
-      puts "#{ARGV[0]} resolves to " + "#{resolved_partial}.".green
-      begin
-        exec "open #{resolved_partial}"
-      rescue Errno::ENOENT => _
-        puts "Could not open file.".red
-      end
-      break
+    next unless File.exist?(resolved_partial)
+
+    puts "#{ARGV[0]} resolves to " + "#{resolved_partial}.".green
+    begin
+      exec "open #{resolved_partial}"
+    rescue Errno::ENOENT => _e
+      puts 'Could not open file.'.red
     end
+    break
   end
-  break if !resolved_partial.nil? && File.exists?(resolved_partial)
+  break if !resolved_partial.nil? && File.exist?(resolved_partial)
 end
 
-if resolved_partial.nil? || !File.exists?(resolved_partial)
+if resolved_partial.nil? || !File.exist?(resolved_partial)
   puts "Sorry, we couldn't find the partial which corresponds to `#{ARGV[0]}`.".red
-  puts "Please check the path you are trying to resolve and try again.".red
-  puts ""
+  puts 'Please check the path you are trying to resolve and try again.'.red
+  puts ''
   puts "Hint: Does the file already exist in the directory you're trying to resolve?"
   puts "Check the path and see if it's already being rendered directly from the partial in question."
 end

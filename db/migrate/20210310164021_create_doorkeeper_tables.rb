@@ -11,7 +11,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[6.1]
       # that doesn't require redirect URI to be used during authorization
       # like Client Credentials flow or Resource Owner Password.
       t.text :redirect_uri
-      t.string :scopes, null: false, default: ""
+      t.string :scopes, null: false, default: ''
       t.boolean :confidential, null: false, default: true
       t.timestamps null: false
     end
@@ -46,7 +46,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[6.1]
       #
       # Comment out this line if you want refresh tokens to be instantly
       # revoked after use.
-      t.string :previous_refresh_token, null: false, default: ""
+      t.string :previous_refresh_token, null: false, default: ''
     end
 
     add_index :oauth_access_tokens, :token, unique: true

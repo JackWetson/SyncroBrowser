@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWebhooksOutgoingEndpointEventTypes < ActiveRecord::Migration[5.2]
   def change
     create_table :webhooks_outgoing_endpoint_event_types do |t|
