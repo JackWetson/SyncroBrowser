@@ -6,6 +6,7 @@ class Account::CustomersController < Account::ApplicationController
   def index
     # if you only want these objects shown on their parent's show page, uncomment this:
     # redirect_to [:account, @team]
+    CustomerUpdateAllJob.perform_async(@team.id.to_i)
   end
 
   # GET /account/customers/:id

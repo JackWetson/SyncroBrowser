@@ -4,7 +4,7 @@
 <% hide_actions ||= false %>
 <% hide_back ||= false %>
 
-<%= render 'account/shared/box' do |p| %>
+<%= render "account/shared/box" do |p| %>
   <% p.content_for :title, t(".contexts.#{context.class.name.underscore}.header") %>
   <% p.content_for :description do %>
     <%= t(".contexts.#{context.class.name.underscore}.description#{"_empty" unless customers.any?}") %>
@@ -15,32 +15,32 @@
       <table class="table">
         <thead>
           <tr>
-            <th><%= t('.fields.syncroid.heading') %></th>
-            <th><%= t('.fields.firstname.heading') %></th>
-            <th><%= t('.fields.lastname.heading') %></th>
-            <th><%= t('.fields.businessname.heading') %></th>
-            <th><%= t('.fields.email.heading') %></th>
-            <th><%= t('.fields.phone.heading') %></th>
-            <th><%= t('.fields.mobile.heading') %></th>
-            <th><%= t('.fields.created.heading') %></th>
-            <th><%= t('.fields.updated.heading') %></th>
-            <th><%= t('.fields.pdf_url.heading') %></th>
-            <th><%= t('.fields.address.heading') %></th>
-            <th><%= t('.fields.address_2.heading') %></th>
-            <th><%= t('.fields.city.heading') %></th>
-            <th><%= t('.fields.state.heading') %></th>
-            <th><%= t('.fields.zip.heading') %></th>
-            <th><%= t('.fields.latitude.heading') %></th>
-            <th><%= t('.fields.longitude.heading') %></th>
-            <th><%= t('.fields.notes.heading') %></th>
-            <th  class="text-center"><%= t('.fields.get_sms.heading') %></th>
-            <th  class="text-center"><%= t('.fields.opt_out.heading') %></th>
-            <th  class="text-center"><%= t('.fields.disabled.heading') %></th>
-            <th  class="text-center"><%= t('.fields.no_email.heading') %></th>
-            <th><%= t('.fields.business_and_full_name.heading') %></th>
-            <th><%= t('.fields.business_then_name.heading') %></th>
-            <%# 🚅 super scaffolding will insert new field headers above this line. %>
-            <th><%= t('.fields.created_at.heading') %></th>
+            <th><%= t(".fields.syncroid.heading") %></th>
+            <th><%= t(".fields.firstname.heading") %></th>
+            <th><%= t(".fields.lastname.heading") %></th>
+            <th><%= t(".fields.businessname.heading") %></th>
+            <th><%= t(".fields.email.heading") %></th>
+            <th><%= t(".fields.phone.heading") %></th>
+            <th><%= t(".fields.mobile.heading") %></th>
+            <th><%= t(".fields.created.heading") %></th>
+            <th><%= t(".fields.updated.heading") %></th>
+            <th><%= t(".fields.pdf_url.heading") %></th>
+            <th><%= t(".fields.address.heading") %></th>
+            <th><%= t(".fields.address_2.heading") %></th>
+            <th><%= t(".fields.city.heading") %></th>
+            <th><%= t(".fields.state.heading") %></th>
+            <th><%= t(".fields.zip.heading") %></th>
+            <th><%= t(".fields.latitude.heading") %></th>
+            <th><%= t(".fields.longitude.heading") %></th>
+            <th><%= t(".fields.notes.heading") %></th>
+            <th  class="text-center"><%= t(".fields.get_sms.heading") %></th>
+            <th  class="text-center"><%= t(".fields.opt_out.heading") %></th>
+            <th  class="text-center"><%= t(".fields.disabled.heading") %></th>
+            <th  class="text-center"><%= t(".fields.no_email.heading") %></th>
+            <th><%= t(".fields.business_and_full_name.heading") %></th>
+            <th><%= t(".fields.business_then_name.heading") %></th>
+            <% # 🚅 super scaffolding will insert new field headers above this line. %>
+            <th><%= t(".fields.created_at.heading") %></th>
             <th class="text-right"></th>
           </tr>
         </thead>
@@ -48,39 +48,39 @@
           <% customers.each do |customer| %>
             <% with_attribute_settings object: customer do %>
               <tr data-id="<%= customer.id %>">
-                <td><%= render 'shared/attributes/text', attribute: :syncroid, url: [:account, customer] %></td>
-                <td><%= render 'shared/attributes/text', attribute: :firstname %></td>
-                <td><%= render 'shared/attributes/text', attribute: :lastname %></td>
-                <td><%= render 'shared/attributes/text', attribute: :businessname %></td>
-                <td><%= render 'shared/attributes/text', attribute: :email %></td>
-                <td><%= render 'shared/attributes/text', attribute: :phone %></td>
-                <td><%= render 'shared/attributes/text', attribute: :mobile %></td>
-                <td><%= render 'shared/attributes/date_and_time', attribute: :created %></td>
-                <td><%= render 'shared/attributes/date_and_time', attribute: :updated %></td>
-                <td><%= render 'shared/attributes/text', attribute: :pdf_url %></td>
-                <td><%= render 'shared/attributes/text', attribute: :address %></td>
-                <td><%= render 'shared/attributes/text', attribute: :address_2 %></td>
-                <td><%= render 'shared/attributes/text', attribute: :city %></td>
-                <td><%= render 'shared/attributes/text', attribute: :state %></td>
-                <td><%= render 'shared/attributes/text', attribute: :zip %></td>
-                <td><%= render 'shared/attributes/text', attribute: :latitude %></td>
-                <td><%= render 'shared/attributes/text', attribute: :longitude %></td>
-                <td><%= render 'shared/attributes/text', attribute: :notes %></td>
-                <td class="text-center"><%= render 'shared/attributes/boolean', attribute: :get_sms %></td>
-                <td class="text-center"><%= render 'shared/attributes/boolean', attribute: :opt_out %></td>
-                <td class="text-center"><%= render 'shared/attributes/boolean', attribute: :disabled %></td>
-                <td class="text-center"><%= render 'shared/attributes/boolean', attribute: :no_email %></td>
-                <td><%= render 'shared/attributes/text', attribute: :business_and_full_name %></td>
-                <td><%= render 'shared/attributes/text', attribute: :business_then_name %></td>
-                <%# 🚅 super scaffolding will insert new fields above this line. %>
-                <td><%= render 'shared/attributes/date_and_time', attribute: :created_at %></td>
+                <td><%= render "shared/attributes/text", attribute: :syncroid, url: [:account, customer] %></td>
+                <td><%= render "shared/attributes/text", attribute: :firstname %></td>
+                <td><%= render "shared/attributes/text", attribute: :lastname %></td>
+                <td><%= render "shared/attributes/text", attribute: :businessname %></td>
+                <td><%= render "shared/attributes/text", attribute: :email %></td>
+                <td><%= render "shared/attributes/text", attribute: :phone %></td>
+                <td><%= render "shared/attributes/text", attribute: :mobile %></td>
+                <td><%= render "shared/attributes/date_and_time", attribute: :created %></td>
+                <td><%= render "shared/attributes/date_and_time", attribute: :updated %></td>
+                <td><%= render "shared/attributes/text", attribute: :pdf_url %></td>
+                <td><%= render "shared/attributes/text", attribute: :address %></td>
+                <td><%= render "shared/attributes/text", attribute: :address_2 %></td>
+                <td><%= render "shared/attributes/text", attribute: :city %></td>
+                <td><%= render "shared/attributes/text", attribute: :state %></td>
+                <td><%= render "shared/attributes/text", attribute: :zip %></td>
+                <td><%= render "shared/attributes/text", attribute: :latitude %></td>
+                <td><%= render "shared/attributes/text", attribute: :longitude %></td>
+                <td><%= render "shared/attributes/text", attribute: :notes %></td>
+                <td class="text-center"><%= render "shared/attributes/boolean", attribute: :get_sms %></td>
+                <td class="text-center"><%= render "shared/attributes/boolean", attribute: :opt_out %></td>
+                <td class="text-center"><%= render "shared/attributes/boolean", attribute: :disabled %></td>
+                <td class="text-center"><%= render "shared/attributes/boolean", attribute: :no_email %></td>
+                <td><%= render "shared/attributes/text", attribute: :business_and_full_name %></td>
+                <td><%= render "shared/attributes/text", attribute: :business_then_name %></td>
+                <% # 🚅 super scaffolding will insert new fields above this line. %>
+                <td><%= render "shared/attributes/date_and_time", attribute: :created_at %></td>
                 <td class="buttons">
                   <% unless hide_actions %>
                     <% if can? :edit, customer %>
-                      <%= link_to t('.buttons.shorthand.edit'), [:edit, :account, customer], class: 'button-secondary button-smaller' %>
+                      <%= link_to t(".buttons.shorthand.edit"), [:edit, :account, customer], class: "button-secondary button-smaller" %>
                     <% end %>
                     <% if can? :destroy, customer %>
-                      <%= button_to t('.buttons.shorthand.destroy'), [:account, customer], method: :delete, data: { confirm: t('.buttons.confirmations.destroy', model_locales(customer)) }, class: 'button-secondary button-smaller' %>
+                      <%= button_to t(".buttons.shorthand.destroy"), [:account, customer], method: :delete, data: { confirm: t(".buttons.confirmations.destroy", model_locales(customer)) }, class: "button-secondary button-smaller" %>
                     <% end %>
                   <% end %>
                 </td>
@@ -96,12 +96,12 @@
     <% unless hide_actions %>
       <% if context == team %>
         <% if can? :create, Customer.new(team: team) %>
-          <%= link_to t('.buttons.new'), [:new, :account, team, :customer], class: "#{first_button_primary(:customer)} new" %>
+          <%= link_to t(".buttons.new"), [:new, :account, team, :customer], class: "#{first_button_primary(:customer)} new" %>
         <% end %>
       <% end %>
 
       <% unless hide_back %>
-        <%= link_to t('global.buttons.back'), [:account, context], class: "#{first_button_primary(:customer)} back" %>
+        <%= link_to t("global.buttons.back"), [:account, context], class: "#{first_button_primary(:customer)} back" %>
       <% end %>
     <% end %>
   <% end %>

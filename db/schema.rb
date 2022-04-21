@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_131305) do
 
   create_table "customers", force: :cascade do |t|
     t.bigint "team_id", null: false
-    t.integer "syncro_id"
+    t.integer "syncroid"
     t.string "firstname"
     t.string "lastname"
     t.string "businessname"

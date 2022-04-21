@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: invitations
+#
+#  id                 :integer          not null, primary key
+#  email              :string
+#  uuid               :string
+#  from_membership_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  team_id            :integer
+#
 class Invitation < ApplicationRecord
   include Invitations::Base
   # 🚅 add concerns above.
