@@ -1,4 +1,4 @@
-# SyncroBrowser
+# Browser
 
 ## History
 

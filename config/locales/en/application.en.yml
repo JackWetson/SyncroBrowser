@@ -1,8 +1,8 @@
 en:
   application:
-    name: SyncroBrowser
+    name: Browser
     owner: Unidentified Developer
     description: "You can update this description in `config/locales/en/application.en.yml`."
     keywords: syncrobrowser seo keywords
     support_email: change.me@localhost
-    key: syncrobrowser
+    key: browser
