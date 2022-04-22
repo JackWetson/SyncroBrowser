@@ -529,6 +529,10 @@ GEM
     rubocop-performance (1.13.3)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.14.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -649,6 +653,7 @@ DEPENDENCIES
   rails_autoscale_agent
   rails_best_practices
   redis (~> 4.0)
+  rubocop-rails
   selenium-webdriver
   sentry-rails
   sentry-ruby

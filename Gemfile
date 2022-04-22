@@ -159,7 +159,7 @@ end
 
 # TODO: Have to specify this dependency here until our changes are in the original package.
 gem 'active_hash', github: 'bullet-train-co/active_hash'
-
+gem 'rubocop-rails'
 # TODO: Have to specify this dependency here until our changes are in the original package or properly forked.
 gem 'wine_bouncer', github: 'bullet-train-co/wine_bouncer'
 
